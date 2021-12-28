@@ -1,0 +1,18 @@
+version: '3'
+services:
+  formalms:
+    image: formalms:latest
+    ports:
+      - "80:80"
+    links:
+      - mariadb
+    environment:
+      F_DB_HOST: mariadb
+      F_DB_USER: root
+      F_DB_PASS: mypass
+      F_DB_NAME: forma
+  mariadb:
+      image: mariadb
+      restart: always
+      environment:
+        MYSQL_ROOT_PASSWORD: mypass
